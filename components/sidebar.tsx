@@ -7,11 +7,13 @@ import {
     RssIcon,
     SearchIcon,
 } from "@heroicons/react/outline";
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
     return (
         <div className="text-gray-500 p-5 text-sm border-r border-gray-900">
             <div className="space-y-4">
+                <button onClick={() => signOut()}>Sign Out</button>
                 <SidebarButton
                     icon={<HomeIcon className="h-5 w-5" />}
                     label="Home"
