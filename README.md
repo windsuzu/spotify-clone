@@ -14,10 +14,16 @@ npx create-next-app@latest --ts spotify-clone
 npx create-next-app@latest -e with-typescript spotify-clone
 ```
 
-- install tailwindcss
+- install `tailwindcss`
 
 ```
 https://tailwindcss.com/docs/guides/nextjs
+```
+
+- install `@reduxjs/toolkit` and `react-redux`
+
+```
+npm install @reduxjs/toolkit react-redux
 ```
 
 ## Login Spotify (NextAuth.js and Spotify-Web-Api-Node)
@@ -217,4 +223,18 @@ export async function middleware(req: any) {
         return NextResponse.redirect(origin + "/login");
     }
 }
+```
+
+### 7 - Use `getSession` before client-side rendering
+
+- Use `getSession()` in SSR can pre-fetch authorization from Spotify
+- [Source Code](pages/index.tsx)
+
+``` js
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getSession(context);
+    return {
+        props: { session },
+    };
+};
 ```

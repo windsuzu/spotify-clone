@@ -1,4 +1,5 @@
 import { BuiltInProviderType } from "next-auth/providers";
+import type { GetServerSideProps } from "next";
 import {
     ClientSafeProvider,
     getProviders,
@@ -39,11 +40,11 @@ const LoginPage = ({ providers }: Props) => {
 
 export default LoginPage;
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
     const providers = await getProviders();
     return {
         props: {
             providers,
         },
     };
-}
+};

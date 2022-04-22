@@ -2,11 +2,18 @@ import NextAuth from "next-auth";
 import { JWT } from "next-auth/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
 import spotifyApi, { LOGIN_URL } from "../../../lib/spotify";
+import type { Session } from "next-auth";
 
-interface SpotifyJWT extends JWT {
+export interface SpotifyJWT extends JWT {
     accessToken: string;
     refreshToken: string;
     accessTokenExpires: number;
+    userId: string;
+}
+
+export interface SpotifySession extends Session {
+    accessToken: string;
+    refreshToken: string;
     userId: string;
 }
 
@@ -62,7 +69,7 @@ export default NextAuth({
             }
 
             // accessToken still valid
-            if (Date.now() < (token as SpotifyJWT).accessTokenExpires * 1000) {
+            if (Date.now() < (token as SpotifyJWT).accessTokenExpires) {
                 return token;
             }
 
@@ -75,7 +82,7 @@ export default NextAuth({
             session.refreshToken = (token as SpotifyJWT).refreshToken;
             session.userId = (token as SpotifyJWT).userId;
 
-            return session;
+            return session as SpotifySession;
         },
     },
 });
