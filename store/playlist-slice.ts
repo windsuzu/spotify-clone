@@ -5,13 +5,13 @@ interface PlaylistState {
     playlist: SpotifyApi.SinglePlaylistResponse | null;
 }
 
-const initPlaylistState: PlaylistState = {
+const initialState: PlaylistState = {
     playlist: null,
 };
 
 const playlistSlice = createSlice({
     name: "playlist",
-    initialState: initPlaylistState,
+    initialState,
     reducers: {},
     extraReducers: {
         [fetchPlaylist.fulfilled.type]: (state, action) => {

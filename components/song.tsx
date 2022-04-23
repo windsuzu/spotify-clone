@@ -1,7 +1,10 @@
 import Image from "next/image";
 import React from "react";
+import useSpotify from "../hooks/useSpotify";
 import { fetchImg } from "../lib/fetch-img";
 import { millisToMinutesAndSeconds } from "../lib/time";
+import { useAppDispatch } from "../store";
+import { trackActions } from "../store/track-slice";
 
 type Props = {
     track: SpotifyApi.PlaylistTrackObject;
@@ -9,8 +12,22 @@ type Props = {
 };
 
 const Song = ({ track, order }: Props) => {
+    const spotifyApi = useSpotify();
+    const dispatch = useAppDispatch();
+
+    const playSong = () => {
+        dispatch(trackActions.setCurrentTrackId(track.track.id));
+        dispatch(trackActions.setIsPlaying(true));
+        spotifyApi.play({
+            uris: [track.track.uri],
+        });
+    };
+
     return (
-        <div className="grid grid-cols-2 text-gray-500 px-2 py-2 hover:bg-gray-900 transition duration-150 ease-out rounded-lg cursor-pointer">
+        <div
+            className="grid grid-cols-2 text-gray-500 px-2 py-2 hover:bg-gray-900 transition duration-150 ease-out rounded-lg cursor-pointer"
+            onClick={playSong}
+        >
             <div className="flex items-center space-x-4">
                 <p>{order + 1}</p>
                 <div className="relative min-w-[40px] min-h-[40px]">

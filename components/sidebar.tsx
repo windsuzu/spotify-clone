@@ -31,7 +31,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className="text-gray-500 p-5 border-r border-gray-900 h-screen overflow-y-scroll scrollbar-hide text-xs lg:text-sm sm:max-w-[12rem] lg:max-w-[14rem] hidden md:inline-flex pr-10">
+        <div className="text-gray-500 p-5 border-r border-gray-900 h-screen overflow-y-scroll scrollbar-hide text-xs lg:text-sm sm:max-w-[12rem] lg:max-w-[14rem] hidden md:inline-block pr-10 pb-32">
             <div className="space-y-4">
                 <SidebarButton
                     icon={<HomeIcon className="h-5 w-5" />}

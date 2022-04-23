@@ -3,6 +3,7 @@ import Center from "../components/center";
 import Sidebar from "../components/sidebar";
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
+import Player from "../components/player";
 
 const Home = () => {
     return (
@@ -18,7 +19,9 @@ const Home = () => {
                 <Center />
             </main>
 
-            <div>{/* player */}</div>
+            <div className="sticky flex items-center bottom-0 h-24 text-white bg-gradient-to-b from-black to-gray-900">
+                <Player />
+            </div>
         </div>
     );
 };
