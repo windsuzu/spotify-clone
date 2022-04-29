@@ -4,25 +4,35 @@ import Sidebar from "../components/sidebar";
 import type { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Player from "../components/player";
+import Modal from "../components/modal";
+import ModalProvider from "../store/modal-context";
 
 const Home = () => {
     return (
-        <div className="bg-black h-screen overflow-hidden">
-            <Head>
-                <title>Spotify Clone</title>
-                <meta name="description" content="A spotify clone project." />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+        <ModalProvider>
+            <>
+                <div className="bg-black h-screen overflow-hidden">
+                    <Head>
+                        <title>Spotify Clone</title>
+                        <meta
+                            name="description"
+                            content="A spotify clone project."
+                        />
+                        <link rel="icon" href="/favicon.ico" />
+                    </Head>
+                    <main className="flex">
+                        <Sidebar />
+                        <Center />
+                    </main>
 
-            <main className="flex">
-                <Sidebar />
-                <Center />
-            </main>
+                    <div className="sticky flex items-center bottom-0 h-24 text-white bg-gradient-to-b from-black to-gray-900">
+                        <Player />
+                    </div>
+                </div>
 
-            <div className="sticky flex items-center bottom-0 h-24 text-white bg-gradient-to-b from-black to-gray-900">
-                <Player />
-            </div>
-        </div>
+                <Modal />
+            </>
+        </ModalProvider>
     );
 };
 

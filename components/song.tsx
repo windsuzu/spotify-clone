@@ -1,9 +1,10 @@
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import useSpotify from "../hooks/useSpotify";
 import { fetchImg } from "../lib/fetch-img";
 import { millisToMinutesAndSeconds } from "../lib/time";
 import { useAppDispatch } from "../store";
+import { ModalContext } from "../store/modal-context";
 import { trackActions } from "../store/track-slice";
 
 type Props = {
@@ -14,13 +15,26 @@ type Props = {
 const Song = ({ track, order }: Props) => {
     const spotifyApi = useSpotify();
     const dispatch = useAppDispatch();
+    const modalContext = useContext(ModalContext);
 
     const playSong = () => {
         dispatch(trackActions.setCurrentTrackId(track.track.id));
         dispatch(trackActions.setIsPlaying(true));
-        spotifyApi.play({
-            uris: [track.track.uri],
-        });
+        spotifyApi
+            .play({
+                uris: [track.track.uri],
+            })
+            .catch((err) => {
+                let msg = "";
+                if (err.message.includes("NO_ACTIVE_DEVICE")) {
+                    msg =
+                        "You should connect a device (Spotify-Web-Player or Desktop-Player) to play your songs!";
+                } else {
+                    msg =
+                        "You need to be a premium member of Spotify to play your songs here!";
+                }
+                modalContext.showModal("Something Went Wrong!", msg, "OK");
+            });
     };
 
     return (
