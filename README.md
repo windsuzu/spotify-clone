@@ -2,6 +2,8 @@
 
 A Spotify clone project built with `TypeScript`, `React/Redux`, `Nextjs`, `TailwindCSS`, etc. Users can log into Spotify with `NextAuth` and get Spotify's permissions and control API through `spotify-web-api-node`.  The general users can see their song list on this site, and Premium level users can control the playback of their songs and volume directly on this site.
 
+> ❤️ This project is under development mode, so if you would like to try out this demo, please contact me and provide me with an email of your Spotify account. 😀
+
 * [Installation](#installation)
 * [Login Spotify (NextAuth.js and Spotify-Web-Api-Node)](#login-spotify-nextauthjs-and-spotify-web-api-node)
   * [0 - Dependencies](#0---dependencies)
