@@ -15,6 +15,11 @@ A Spotify clone project built with `TypeScript`, `React/Redux`, `Nextjs`, `Tailw
   * [5 - Use `useSession()` to get token data](#5---use-usesession-to-get-token-data)
   * [6 - Setup Nextjs Middleware](#6---setup-nextjs-middleware)
   * [7 - Use `getSession` before client-side rendering](#7---use-getsession-before-client-side-rendering)
+* [Components](#components)
+* [State Management](#state-management)
+  * [Redux](#redux)
+  * [useContext](#usecontext)
+* [Acknowledgement](#acknowledgement)
 
 ## Installation
 
