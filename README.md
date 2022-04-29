@@ -1,8 +1,20 @@
-<!-- LOGO -->
+<a href="https://airbnb-clone-gamma-livid.vercel.app/" target="_blank"><img src="assets/demo.gif" width="100%"></a>
 
-<!-- DESCRIPTION -->
+A Spotify clone project built with `TypeScript`, `React/Redux`, `Nextjs`, `TailwindCSS`, etc. Users can log into Spotify with `NextAuth` and get Spotify's permissions and control API through `spotify-web-api-node`.  The general users can see their song list on this site, and Premium level users can control the playback of their songs and volume directly on this site.
 
-<!-- TOC -->
+* [Installation](#installation)
+* [Login Spotify (NextAuth.js and Spotify-Web-Api-Node)](#login-spotify-nextauthjs-and-spotify-web-api-node)
+  * [0 - Dependencies](#0---dependencies)
+  * [1 - Setup Spotify-Web-Api-Node](#1---setup-spotify-web-api-node)
+  * [2 - Setup NextAuth](#2---setup-nextauth)
+    * [2-1 API Route](#2-1-api-route)
+    * [2-2 callbacks jwt](#2-2-callbacks-jwt)
+    * [2-3 callbacks session](#2-3-callbacks-session)
+  * [3 - Setup Custom Front-End Login Page](#3---setup-custom-front-end-login-page)
+  * [4 - Setup Session Provider](#4---setup-session-provider)
+  * [5 - Use `useSession()` to get token data](#5---use-usesession-to-get-token-data)
+  * [6 - Setup Nextjs Middleware](#6---setup-nextjs-middleware)
+  * [7 - Use `getSession` before client-side rendering](#7---use-getsession-before-client-side-rendering)
 
 ## Installation
 
@@ -238,3 +250,33 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
 };
 ```
+
+## Components
+
+- [Login Page](pages/login/index.tsx)
+- [Sidebar](components/sidebar.tsx)
+- [Profile and Logout Menu](components/profile.tsx)
+- [Center (PlayList)](components/center.tsx)
+  - [Songs](components/songs.tsx)
+  - [Song](components/song.tsx)
+- [Player](components/player.tsx)
+- [Modal](components/modal.tsx)
+
+## State Management
+
+### Redux 
+
+- [redux store](store/index.ts)
+  - playlist
+    - [slice/extrareducer](store/playlist-slice.ts)
+    - [async actions (thunk)](store/playlist-action.ts)
+  - track
+    - [slice/reducer](store/track-slice.ts)
+
+### useContext
+
+- [modal-context](store/modal-context.tsx)
+
+## Acknowledgement
+
+- [Sonny Sangha](https://www.youtube.com/channel/UCqeTj_QAnNlmt7FwzNwHZnA)
