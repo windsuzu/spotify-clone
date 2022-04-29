@@ -1,4 +1,4 @@
-<a href="https://airbnb-clone-gamma-livid.vercel.app/" target="_blank"><img src="assets/demo.gif" width="100%"></a>
+<a href="https://spotify-clone-phi-eight.vercel.app/" target="_blank"><img src="assets/demo.gif" width="100%"></a>
 
 A Spotify clone project built with `TypeScript`, `React/Redux`, `Nextjs`, `TailwindCSS`, etc. Users can log into Spotify with `NextAuth` and get Spotify's permissions and control API through `spotify-web-api-node`.  The general users can see their song list on this site, and Premium level users can control the playback of their songs and volume directly on this site.
 
