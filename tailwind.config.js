@@ -4,7 +4,11 @@ module.exports = {
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            backgroundImage: (theme) => ({
+                dec: "url('/dec.svg')",
+            }),
+        },
     },
     plugins: [require("tailwind-scrollbar-hide")],
 };

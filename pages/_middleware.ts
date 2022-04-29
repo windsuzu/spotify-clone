@@ -11,7 +11,12 @@ export async function middleware(req: any) {
         return NextResponse.redirect(origin + "/");
     }
 
-    if (token || pathname.includes("/api/auth") || pathname === "/login") {
+    if (
+        token ||
+        pathname.includes("/api/auth") ||
+        pathname === "/login" ||
+        pathname === "/dec.svg"
+    ) {
         return NextResponse.next();
     }
 
